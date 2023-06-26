@@ -2,7 +2,7 @@
 name: 'Terraform'
 
 on:
-  push:
+  #push:
   pull_request:
 
 permissions:
