@@ -1,18 +1,18 @@
 module "gke" {
   source = "terraform-google-modules/kubernetes-engine/google//modules/private-cluster"
 
-  project_id                = var.gcp_project_id
-  name                      = var.name
-  regional                  = false
-  region                    = var.region
-  zones                     = [var.zone]
-  network                   = module.vpc.network_name
-  subnetwork                = local.subnet_name
-  ip_range_pods             = "${local.subnet_name}-pod-cidr"
-  ip_range_services         = "${local.subnet_name}-svc1-cidr"
+  project_id        = var.gcp_project_id
+  name              = var.name
+  regional          = false
+  region            = var.region
+  zones             = [var.zone]
+  network           = module.vpc.network_name
+  subnetwork        = local.subnet_name
+  ip_range_pods     = "${local.subnet_name}-pod-cidr"
+  ip_range_services = "${local.subnet_name}-svc1-cidr"
   //default_max_pods_per_node = 64
-  service_account           = google_service_account.sa.email
-  network_policy            = true
+  service_account = google_service_account.sa.email
+  network_policy  = true
 
   enable_private_endpoint = true
   enable_private_nodes    = true
@@ -29,7 +29,7 @@ module "gke" {
       "state" : "ENCRYPTED"
     }
   ]
-  
+
   node_pools = [
     {
       name         = "primary-node-pool"

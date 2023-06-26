@@ -50,7 +50,7 @@ module "vpc" {
       ranges      = ["172.16.0.0/28"]
       allow = [{
         protocol = "tcp"
-        ports    = ["443","10250"]
+        ports    = ["443", "10250"]
       }]
     }
   ]
