@@ -33,10 +33,11 @@ locals {
   bastion_name    = format("%s-bastion", local.cluster_name)
   bastion_zone    = format("%s-a", var.region)
   bastion_machine = "g1-small"
+  bastion_image   = "debian-cloud"
 
 
   // KMS
-  keyring = "${var.name}-gke-keyring"
+  keyring = "${var.name}-gke-keyring4"
 
 
 }

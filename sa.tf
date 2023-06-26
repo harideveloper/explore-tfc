@@ -51,16 +51,16 @@ resource "google_project_iam_member" "gke_kms_decrypter" {
 
 // Bastion host
 
-resource "google_service_account" "bastion_sa" {
-  account_id   = "${var.name}-bastion-sa"
-  display_name = "Customer Service Account for Boutique Admin Tasks through Jump VMs"
-}
+# resource "google_service_account" "bastion_sa" {
+#   account_id   = "${var.name}-bastion-sa"
+#   display_name = "Customer Service Account for Boutique Admin Tasks through Jump VMs"
+# }
 
-resource "google_project_iam_member" "bastion_reader" {
-  project = var.gcp_project_id
-  role    = "roles/container.developer"
-  member  = "serviceAccount:${google_service_account.bastion_sa.email}"
-}
+# resource "google_project_iam_member" "bastion_reader" {
+#   project = var.gcp_project_id
+#   role    = "roles/container.developer"
+#   member  = "serviceAccount:${google_service_account.bastion_sa.email}"
+# }
 
 
 

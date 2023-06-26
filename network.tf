@@ -65,4 +65,6 @@ module "cloud-nat" {
   router        = "${var.name}-router"
   network       = module.vpc.network_name
   create_router = true
+
+  depends_on = [module.vpc]
 }
