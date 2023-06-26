@@ -20,7 +20,7 @@ variable "gcp_project_id" {
 variable "name" {
   type        = string
   description = "Name given to the new GKE cluster"
-  default     = "online-boutique"
+  default     = "online-boutique1"
 }
 
 variable "region" {
