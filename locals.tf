@@ -37,7 +37,7 @@ locals {
 
 
   // KMS
-  keyring = "${var.name}-gke-keyring4"
+  keyring = "${var.name}-gke-keyring5"
 
 
 }
