@@ -7,7 +7,8 @@ locals {
     "cloudtrace.googleapis.com",
     "cloudprofiler.googleapis.com",
     "iap.googleapis.com",
-    "cloudkms.googleapis.com"
+    "cloudkms.googleapis.com",
+    "cloudresourcemanager.googleapis.com"
   ]
   memorystore_apis = ["redis.googleapis.com"]
 
