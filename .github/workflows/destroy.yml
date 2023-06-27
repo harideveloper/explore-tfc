@@ -1,0 +1,38 @@
+
+name: 'Destroy'
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  terraform:
+    name: 'Plan'
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    
+    - name: auth gcp
+      uses: google-github-actions/auth@v0
+      with:
+        credentials_json: ${{ secrets.GCP_SA_KEY }}
+        cleanup_credentials: false
+
+    - name: tf setup
+      uses: hashicorp/setup-terraform@v1
+  
+    - name: tf init
+      run: terraform init
+      
+    - name: tf plan
+      run: terraform plan -input=false
+
+    - name: tf destroy
+      run: terraform destroy -auto-approve -input=false

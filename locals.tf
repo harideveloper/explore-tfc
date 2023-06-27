@@ -25,14 +25,13 @@ locals {
   svc1_cidr      = "10.2.0.0/16"
   svc2_cidr      = "10.3.0.0/16"
   pod_2_pod_cidr = "10.1.0.0/16"
-
-  master_ip = "172.16.0.0/28"
+  master_ip      = "172.16.0.0/28"
 
 
   // Bastion host for developers
   bastion_name                 = format("%s-bastion", local.cluster_name)
   bastion_zone                 = format("%s-a", var.region)
-  bastion_machine              = "g1-small"
+  bastion_machine              = "e2-medium"
   bastion_image                = "debian-cloud"
   bastion_service_account_name = "bastion-vm"
   bastion_additional_roles = [
@@ -40,8 +39,7 @@ locals {
   ]
 
   // KMS
-  keyring = "${var.name}-gke-keyring5"
-  keys    = ["gke-key"]
+  keys = ["gke-key"]
 
 
 }

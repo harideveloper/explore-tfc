@@ -10,7 +10,7 @@ module "gke" {
   subnetwork        = local.subnet_name
   ip_range_pods     = "${local.subnet_name}-pod-cidr"
   ip_range_services = "${local.subnet_name}-svc1-cidr"
-  //default_max_pods_per_node = 64
+
   service_account = google_service_account.sa.email
   network_policy  = true
 
