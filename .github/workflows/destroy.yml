@@ -9,7 +9,7 @@ permissions:
 
 jobs:
   terraform:
-    name: 'Plan'
+    name: 'Destroy'
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -30,7 +30,7 @@ jobs:
   
     - name: tf init
       run: terraform init
-      
+
     - name: tf plan
       run: terraform plan -input=false
 
