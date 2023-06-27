@@ -33,16 +33,6 @@ module "vpc" {
   }
 
   firewall_rules = [
-    # {
-    #   name        = "${var.name}-allow-all-10"
-    #   description = "Allow Pod to Pod connectivity"
-    #   direction   = "INGRESS"
-    #   ranges      = ["10.0.0.0/8"]
-    #   allow = [{
-    #     protocol = "tcp"
-    #     ports    = ["0-65535"]
-    #   }]
-    # }, 
     {
       name        = "${var.name}-allow-master"
       description = "Allow master connectivity"

@@ -1,26 +1,23 @@
 
-name: 'Deploy'
+name: 'Speculative Plan'
 
 on:
-  pull_request_target:
+  pull_request:
     branches: [ "main" ]
-    types:
-      - closed
 
 permissions:
   contents: read
 
 jobs:
   terraform:
-    if: github.event.pull_request.merged == true
-    name: 'Apply'
+    name: 'Plan'
     runs-on: ubuntu-latest
     defaults:
       run:
         shell: bash
 
     steps:
-    - name: checkout
+    - name: Checkout
       uses: actions/checkout@v3
     
     - name: auth gcp
@@ -31,8 +28,8 @@ jobs:
 
     - name: tf setup
       uses: hashicorp/setup-terraform@v1
-      with:
-        cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+      # with:
+      #   cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
   
     - name: tf init
       run: terraform init
@@ -43,5 +40,5 @@ jobs:
     - name: tf plan
       run: terraform plan -input=false
 
-    - name: tf apply
-      run: terraform apply -auto-approve -input=false
+    # - name: tf destroy
+    #   run: terraform destroy -auto-approve -input=false

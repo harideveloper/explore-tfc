@@ -30,14 +30,18 @@ locals {
 
 
   // Bastion host for developers
-  bastion_name    = format("%s-bastion", local.cluster_name)
-  bastion_zone    = format("%s-a", var.region)
-  bastion_machine = "g1-small"
-  bastion_image   = "debian-cloud"
-
+  bastion_name                 = format("%s-bastion", local.cluster_name)
+  bastion_zone                 = format("%s-a", var.region)
+  bastion_machine              = "g1-small"
+  bastion_image                = "debian-cloud"
+  bastion_service_account_name = "bastion-vm"
+  bastion_additional_roles = [
+    "roles/container.developer"
+  ]
 
   // KMS
   keyring = "${var.name}-gke-keyring5"
+  keys    = ["gke-key"]
 
 
 }

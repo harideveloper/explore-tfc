@@ -11,17 +11,13 @@ module "bastion" {
   zone           = local.bastion_zone
   image_project  = local.bastion_image
   machine_type   = local.bastion_machine
-  startup_script = templatefile("${path.module}/templates/startup-script.tftpl", {})
+  startup_script = templatefile("${path.module}/templates/vm-startup.tftpl", {})
   members        = var.bastion_members
   shielded_vm    = "false"
-  # service_account_name = google_service_account.bastion_sa.account_id
-  service_account_name = "bastion-vm"
-  service_account_roles_supplemental = [
-    "roles/container.developer"
-  ]
-  //service_account_email = google_service_account.bastion_sa.email
 
-  # depends_on = [module.vpc, google_service_account.bastion_sa]
+  service_account_name               = local.bastion_service_account_name
+  service_account_roles_supplemental = local.bastion_additional_roles
+
   depends_on = [module.vpc]
 }
 
