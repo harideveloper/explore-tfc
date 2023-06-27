@@ -28,13 +28,6 @@ resource "google_project_iam_member" "gke_metadata_writer" {
   member  = "serviceAccount:${google_service_account.sa.email}"
 }
 
-
-# resource "google_project_iam_member" "gke_kms_decrypter" {
-#   project = var.gcp_project_id
-#   role    = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
-#   member  = "serviceAccount:${google_service_account.sa.email}"
-# }
-
 resource "google_project_iam_member" "gke_kms_encrypter" {
   project = var.gcp_project_id
   role    = "roles/cloudkms.cryptoKeyEncrypter"
@@ -46,22 +39,3 @@ resource "google_project_iam_member" "gke_kms_decrypter" {
   role    = "roles/cloudkms.cryptoKeyDecrypter"
   member  = "serviceAccount:${google_service_account.sa.email}"
 }
-
-
-
-// Bastion host
-
-# resource "google_service_account" "bastion_sa" {
-#   account_id   = "${var.name}-bastion-sa"
-#   display_name = "Customer Service Account for Boutique Admin Tasks through Jump VMs"
-# }
-
-# resource "google_project_iam_member" "bastion_reader" {
-#   project = var.gcp_project_id
-#   role    = "roles/container.developer"
-#   member  = "serviceAccount:${google_service_account.bastion_sa.email}"
-# }
-
-
-
-

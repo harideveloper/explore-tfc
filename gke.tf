@@ -42,5 +42,7 @@ module "gke" {
     },
   ]
 
-  depends_on = [module.vpc, google_service_account.sa, module.bastion]
+  #depends_on = [module.vpc, google_service_account.sa, module.bastion]
+  depends_on = [module.vpc, google_service_account.sa, module.bastion, module.kms.keys]
+
 }
