@@ -2,8 +2,8 @@
 name: 'Publish'
 
 on:
-  push:
-    branches: [ "test" ]
+  # push:
+  #   branches: [ "test" ]
   workflow_dispatch:
     inputs:
       git_ref:
@@ -57,6 +57,11 @@ jobs:
         echo "PUSH_TO_REMOTE=${{ github.event.inputs.push_to_remote }}" >> $GITHUB_ENV
 
     - name: Run Publish Script
+      if: ${{ github.event.inputs.push_to_remote }} == true
       run: ./scripts/publish.sh "$GIT_REF" "$GIT_TAG" "PUSH_TO_REMOTE"
       shell: bash
 
+    # - name: Run Publish Script
+    #   if: ${{ github.event.inputs.push_to_remote }} == true
+    #   run: ./scripts/push_to_remote.sh "$GIT_REF" "$GIT_TAG" "PUSH_TO_REMOTE"
+    #   shell: bash
