@@ -14,8 +14,8 @@ on:
       git_tag:
         description: what new version tag would you like to create? latest version
         type: string
-        #default: ${{ steps.get-latest-tag.outputs.latest_tag }}
-        default: v2.0.19
+        default: ${{ steps.get-latest-tag.outputs.latest_tag }}
+        #default: v2.0.19
         required: true
 
 permissions:
