@@ -14,7 +14,7 @@ on:
       git_tag:
         description: What new version tag would you like to create? 
         type: string
-        default: Please enter tag name (e.g v2.0.19)
+        default: v0.0.2
         #default: v2.0.19
         required: true
       push_to_remote:
