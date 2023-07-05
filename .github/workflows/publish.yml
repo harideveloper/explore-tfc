@@ -33,15 +33,15 @@ jobs:
       uses: actions/checkout@v3
 
     - name: Get Latest Tag
-        id: get-latest-tag
-        run: |
-          latest_tag=$(git describe --abbrev=0 --tags)
-          echo "::set-output name=latest_tag::$latest_tag"
+      id: get-latest-tag
+      run: |
+        latest_tag=$(git describe --abbrev=0 --tags)
+        echo "::set-output name=latest_tag::$latest_tag"
 
      - name: test
-        id: test-id
-        run: |
-          echo "testing"
+       id: test-id
+       run: |
+        echo "testing"
 
     # - name: Set environment variables
     #     run: |
