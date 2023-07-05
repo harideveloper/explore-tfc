@@ -10,9 +10,9 @@ on:
         default: origin/main
         required: true
       git_tag:
-        description: git ref (tag, commit hash, branch) do you want to reset the PUBLIC branch? [default=origin/main]
-        type: number
-        default: origin/main
+        description: what new version tag would you like to create? latest version is $(git describe --tags --abbrev=0) 
+        type: string
+        default: $(git describe --tags --abbrev=0) 
         required: true
 
 permissions:
