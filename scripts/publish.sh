@@ -8,15 +8,15 @@ echo $2
 root_dir="$(git rev-parse --show-toplevel)"
 
 echo -e "WARNING: continuing may lose any uncommitted changes you have on your CURRENT and PUBLIC branches. Do you want to continue?"
-read -r CONFIRMATION
+#read -r CONFIRMATION
 
-if [[ ! "${CONFIRMATION}" =~ yes|YES|Yes ]]; then
-  echo -e "Cancelled."
-  exit 1
-fi
+# if [[ ! "${CONFIRMATION}" =~ yes|YES|Yes ]]; then
+#   echo -e "Cancelled."
+#   exit 1
+# fi
 
 git fetch
-echo -e "To which git ref (tag, commit hash, branch) do you want to reset the PUBLIC branch? [default=origin/main]"
+echo "To which git ref (tag, commit hash, branch) do you want to reset the PUBLIC branch? [default=origin/main]"
 #read -r GIT_REF
 #GIT_REF=${GIT_REF:-origin/main}
 GIT_REF=$1
@@ -32,7 +32,7 @@ fi
 prev_branch="$(git branch --show-current)"
 
 # ask for the new version number
-echo -e "The most recent version tag is $(git describe --tags --abbrev=0): what new version tag would you like to create?"
+echo "The most recent version tag is $(git describe --tags --abbrev=0): what new version tag would you like to create?"
 #read -r NEW_VERSION
 NEW_VERSION=$2
 
