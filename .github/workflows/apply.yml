@@ -40,8 +40,8 @@ jobs:
     - name: tf format
       run: terraform fmt -check
 
-    - name: tf plan
-      run: terraform plan -input=false
+    # - name: tf plan
+    #   run: terraform plan -input=false
 
-    - name: tf apply
-      run: terraform apply -auto-approve -input=false
+    # - name: tf apply
+    #   run: terraform apply -auto-approve -input=false
