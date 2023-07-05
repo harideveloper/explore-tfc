@@ -57,6 +57,7 @@ git reset --hard "${GIT_REF}"
 # reset the git HEAD pointer to the initial commit, but keep all changes
 # in the working directory & staging area
 #git reset --soft 3a9865589a5af8ac1bc512e97158f06e6e963bbe
+ls -ltr
 
 # redactor - remove/replace things we don't want on the public branch
 rm -f "${root_dir}/scripts/test.sh"
@@ -67,6 +68,8 @@ rm -f "${root_dir}/scripts/test.sh"
 # rm -f "${root_dir}/.github/workflows/cleardown_images.yml"
 # mv README.candidate.md README.md
 # sed -i "s/- main/- public/" .github/workflows/monorepo_ci.yml
+
+ls -ltr
 
 # add the redactions to the git index
 git add --all
