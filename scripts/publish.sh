@@ -72,10 +72,10 @@ rm -f "${root_dir}/scripts/test.sh"
 ls -ltr
 
 # add the redactions to the git index
-git add --all
+#git add --all
 
 # add everything in the working directory as a single new commit
-git commit -m "Published public version of repo"
+#git commit -m "Published public version of repo"
 
 # ask if we should push to remotes
 #echo -e "\nThe local public branch is now updated. Would you like to push to remotes?"
