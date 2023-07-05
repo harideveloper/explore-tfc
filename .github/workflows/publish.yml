@@ -36,6 +36,6 @@ jobs:
           echo "GIT_TAG=${{ github.event.inputs.git_tag }}" >> $GITHUB_ENV
   
     - name: Run Publish Script
-        run: ./.github/scripts/publish.sh $GIT_REF $GIT_TAG
+        run: ./scripts/publish.sh $GIT_REF $GIT_TAG
         shell: bash
 
