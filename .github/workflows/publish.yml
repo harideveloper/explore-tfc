@@ -39,9 +39,9 @@ jobs:
         latest_tag=$(git describe --abbrev=0 --tags)
         echo "::set-output name=latest_tag::$latest_tag"
 
-     - name: test
-       id: test-id
-       run: |
+    - name: test
+      id: test-id
+      run: |
         echo "testing"
 
     # - name: Set environment variables
