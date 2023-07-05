@@ -44,12 +44,12 @@ jobs:
       run: |
         echo "testing"
 
-    # - name: Set environment variables
-    #     run: |
-    #       echo "GIT_REF=${{ github.event.inputs.git_ref }}" >> $GITHUB_ENV
-    #       echo "GIT_TAG=${{ github.event.inputs.git_tag }}" >> $GITHUB_ENV
+    - name: Set environment variables
+        run: |
+          echo "GIT_REF=${{ github.event.inputs.git_ref }}" >> $GITHUB_ENV
+          echo "GIT_TAG=${{ github.event.inputs.git_tag }}" >> $GITHUB_ENV
   
-    # - name: Run Publish Script
-    #     run: ./scripts/publish.sh $GIT_REF $GIT_TAG
-    #     shell: bash
+    - name: Run Publish Script
+        run: ./scripts/publish.sh $GIT_REF $GIT_TAG
+        shell: bash
 
