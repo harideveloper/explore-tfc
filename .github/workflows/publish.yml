@@ -2,6 +2,8 @@
 name: 'Publish'
 
 on:
+  push:
+    branches: [ "test" ]
   workflow_dispatch:
     inputs:
       git_ref:
@@ -10,16 +12,17 @@ on:
         default: origin/main
         required: true
       git_tag:
-        description: git ref (tag, commit hash, branch) do you want to reset the PUBLIC branch? [default=origin/main]
-        type: number
-        default: origin/main
+        description: what new version tag would you like to create? latest version
+        type: string
+        default: ${{ github.event.inputs.git_tag || steps.get-latest-tag.outputs.latest_tag }}
+        #default: v2.0.19
         required: true
 
 permissions:
   contents: read
 
 jobs:
-  terraform:
+  publish:
     name: 'publish'
     runs-on: ubuntu-latest
     defaults:
@@ -29,6 +32,17 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v3
+
+    - name: Get Latest Tag
+      id: get-latest-tag
+      run: |
+        latest_tag=$(git describe --abbrev=0 --tags)
+        echo "::set-output name=latest_tag::$latest_tag"
+
+    - name: test
+      id: test-id
+      run: |
+        echo "testing"
 
     # - name: Set environment variables
     #     run: |
