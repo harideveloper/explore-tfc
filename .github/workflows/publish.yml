@@ -17,6 +17,12 @@ on:
         default: Please enter tag name (e.g v2.0.19)
         #default: v2.0.19
         required: true
+      push_to_remote:
+        description: Would you like changes to be pushed to remote branch ?
+        type: boolean
+        default: false
+        #default: v2.0.19
+        required: true
 
 permissions:
   contents: read
@@ -48,8 +54,9 @@ jobs:
       run: |
         echo "GIT_REF=${{ github.event.inputs.git_ref }}" >> $GITHUB_ENV
         echo "GIT_TAG=${{ github.event.inputs.git_tag }}" >> $GITHUB_ENV
-  
+        echo "PUSH_TO_REMOTE=${{ github.event.inputs.push_to_remote }}" >> $GITHUB_ENV
+
     - name: Run Publish Script
-      run: ./scripts/publish.sh "$GIT_REF" "$GIT_TAG"
+      run: ./scripts/publish.sh "$GIT_REF" "$GIT_TAG" "PUSH_TO_REMOTE"
       shell: bash
 
