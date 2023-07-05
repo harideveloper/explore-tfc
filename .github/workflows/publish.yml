@@ -12,9 +12,9 @@ on:
         default: origin/main
         required: true
       git_tag:
-        description: what new version tag would you like to create? latest version is $(git describe --tags --abbrev=0) 
+        description: what new version tag would you like to create? latest version
         type: string
-        default: $(git describe --tags --abbrev=0) 
+        default: ${GITHUB_REF#refs/*/}
         required: true
 
 permissions:
