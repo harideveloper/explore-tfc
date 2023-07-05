@@ -14,7 +14,7 @@ on:
       git_tag:
         description: what new version tag would you like to create? latest version
         type: string
-        default: ${{ github.ref#refs/*/ }}
+        default: ${{ GITHUB_REF#refs/*/ }}
         required: true
 
 permissions:
